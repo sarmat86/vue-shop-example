@@ -29,6 +29,8 @@ defineProps<{
     padding: 1rem;
     position: relative;
     cursor: pointer;
+    max-width: 13.75rem;
+    margin-bottom: 2rem;
 
     &:hover {
       .product-item__content-wrapper {

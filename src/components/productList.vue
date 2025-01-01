@@ -1,23 +1,31 @@
 <template>
   <div class="product-list">
     <h2 class="product-list__title">Wyszukaj czasopismo</h2>
-    <div class="product-list__wrapper">
+    <div v-if="!isLoading" class="product-list__wrapper">
       <ProductTile v-for="product in products" :key="product.id" :product="product" />
+    </div>
+    <div v-else class="product-list__loader" >
+      <LoaderComponent />
     </div>
   </div>
 </template>
 
 <script setup lang="ts">
-import { useProductsStore } from '@/stores/products'
-import { computed } from 'vue'
+import { useProductsStore } from '@/stores/productsStore'
 import ProductTile from '@/components/productTile.vue'
+import LoaderComponent from '@/components/loaderComponent.vue'
+import { storeToRefs } from 'pinia';
 
-const productsStore = useProductsStore()
-const products = computed(() => productsStore.products)
+const productsStore = useProductsStore();
+productsStore.fetchProducts();
+
+const { products, isLoading } = storeToRefs(productsStore);
+
 </script>
 
 <style lang="scss">
 .product-list {
+  min-height: 100vh;
   &__title {
     font-size: 2.625rem;
     font-weight: 700;
@@ -26,8 +34,16 @@ const products = computed(() => productsStore.products)
 
   &__wrapper {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(15.625rem, 1fr));
-    gap: 2rem;
+    grid-template-columns: repeat(4, minmax(15.625rem, 1fr));
+    gap: 4rem 2rem;
+  }
+
+  &__loader {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    height: 100vh;
   }
 }
 </style>
