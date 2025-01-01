@@ -7,6 +7,7 @@
     <div v-else class="product-list__loader" >
       <LoaderComponent />
     </div>
+    <PaginationComponent v-if="!isLoading" />
   </div>
 </template>
 
@@ -14,6 +15,7 @@
 import { useProductsStore } from '@/stores/productsStore'
 import ProductTile from '@/components/productTile.vue'
 import LoaderComponent from '@/components/loaderComponent.vue'
+import PaginationComponent from '@/components/paginationComponent.vue'
 import { storeToRefs } from 'pinia';
 
 const productsStore = useProductsStore();
@@ -26,6 +28,7 @@ const { products, isLoading } = storeToRefs(productsStore);
 <style lang="scss">
 .product-list {
   min-height: 100vh;
+
   &__title {
     font-size: 2.625rem;
     font-weight: 700;

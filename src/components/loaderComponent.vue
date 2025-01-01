@@ -22,8 +22,8 @@
     radial-gradient(at 80% 40%,#0000,#0008),
     radial-gradient(circle  5px,#fff 94%,#0000),
     radial-gradient(circle 10px,#000 94%,#0000),
-    linear-gradient(var(--color-gold) 0 0) top   /100% calc(50% - 5px),
-    linear-gradient(#fff    0 0) bottom/100% calc(50% - 5px)
+    linear-gradient(var(--color-primary) 0 0) top   /100% calc(50% - 5px),
+    linear-gradient(var(--color-secondary)    0 0) bottom/100% calc(50% - 5px)
     #000;
   background-repeat: no-repeat;
   animation: l20 1s infinite cubic-bezier(0.5,120,0.5,-120);

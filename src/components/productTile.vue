@@ -8,7 +8,9 @@
       <p class="product-item__price">{{ product.price }} <span class="product-item__price-currency">PLN</span></p>
       <p class="product-item__vat">+ VAT 23%</p>
       <button class="product-item__details">SZCZEGÓŁY</button>
+      <div class="product-item__border" />
     </div>
+
   </div>
 </template>
 
@@ -29,25 +31,36 @@ defineProps<{
     padding: 1rem;
     position: relative;
     cursor: pointer;
-    max-width: 13.75rem;
+    max-width: 17.1875rem;
     margin-bottom: 2rem;
+    margin: 0 auto;
 
     &:hover {
-      .product-item__content-wrapper {
-        border: .0625rem solid var(--color-gold);
+      .product-item__border {
+        border: .0625rem solid var(--color-secondary);
         box-shadow: .3125rem .3125rem .625rem 0rem rgba(46, 56, 56, 0.2);
-        color: var(--color-gold);
+        color: var(--color-secondary);
         transition: all 0.2s ease-in-out;
       }
-      .product-item__details {
-        color: var(--color-gold);
+      .product-item__details, > * {
+        color: var(--color-secondary);
         transition: all 0.2s ease-in-out;
       }
     }
 
+    &__border {
+      border: .0625rem solid transparent;
+      transition: all 0.2s ease-in-out;
+      position: absolute;
+      left: -1.875rem;
+      right: -1.875rem;
+      top: -5.125rem;
+      height: 155%;
+    }
+
     &__image-wrapper {
     width: 100%;
-    height: 18.75rem;
+    height: 11.875rem;
     margin-bottom: 1rem;
     display: flex;
     align-items: center;
@@ -57,16 +70,10 @@ defineProps<{
   }
 
   &__content-wrapper {
+    position: relative;
     display: flex;
     flex-direction: column;
     align-items: center;
-    border: .0625rem solid transparent;
-    position: absolute;
-        top: 56%;
-    left: -0.75rem;
-    right: -0.3125rem;
-    padding-top: 4.5625rem;
-    padding-bottom: 1rem;
     }
 
   &__image {
@@ -76,7 +83,8 @@ defineProps<{
   }
 
   &__name {
-    font-size: 1.125rem;
+    font-size: 1.0625rem;
+    letter-spacing: 0rem;
     font-weight: 900;
     margin-top: .625rem;
     text-align: center;

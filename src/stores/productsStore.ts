@@ -5,6 +5,7 @@ import { fetchProducts } from '@/mockedApi/productsApi'
 type ProductsState = {
   products: ProductType[]
   currentPage: number
+  totalPages: number
   isLoading: boolean
 }
 
@@ -13,6 +14,7 @@ export const useProductsStore = defineStore('products', {
     return {
       products: [],
       currentPage: 1,
+      totalPages: 0,
       isLoading: false,
     }
   },
@@ -20,17 +22,17 @@ export const useProductsStore = defineStore('products', {
   actions: {
     async fetchProducts() {
       this.isLoading = true
-      this.products = await fetchProducts(this.currentPage)
+      const response = await fetchProducts(this.currentPage)
+      this.products = response.products
+      this.totalPages = response.totalPages
       this.isLoading = false
     },
 
-    nextPage() {
-      this.currentPage++
-      this.fetchProducts()
-    },
-
-    previousPage() {
-      this.currentPage--
+    setCurrentPage(page: number) {
+      if (page > this.totalPages || page < 1 || page === this.currentPage) {
+        return
+      }
+      this.currentPage = page
       this.fetchProducts()
     },
   },

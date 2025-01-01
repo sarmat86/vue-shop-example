@@ -34,7 +34,8 @@
 
   --color-heading: var(--vt-c-text-light-1);
   --color-text: var(--vt-c-text-light-1);
-  --color-gold: var(--vt-c-gold);
+  --color-primary: var(--vt-c-text-light-1);
+  --color-secondary: var(--vt-c-gold);
   --section-gap: 160px;
 }
 
