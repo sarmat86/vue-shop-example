@@ -33,7 +33,6 @@ defineProps<{
     cursor: pointer;
     max-width: 17.1875rem;
     margin-bottom: 2rem;
-    margin: 0 auto;
 
     &:hover {
       .product-item__border {

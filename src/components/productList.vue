@@ -1,5 +1,5 @@
 <template>
-  <div class="product-list">
+  <div class="product-list container">
     <h2 class="product-list__title">Wyszukaj czasopismo</h2>
     <div v-if="!isLoading" class="product-list__wrapper">
       <ProductTile v-for="product in products" :key="product.id" :product="product" />
@@ -39,6 +39,7 @@ const { products, isLoading } = storeToRefs(productsStore);
     display: grid;
     grid-template-columns: repeat(4, minmax(15.625rem, 1fr));
     gap: 4rem 2rem;
+    margin-top: 3.75rem;
   }
 
   &__loader {
