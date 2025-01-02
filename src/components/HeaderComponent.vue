@@ -55,7 +55,7 @@ import CartIcon from '@/components/icons/CartIcon.vue'
 
 <style lang="scss" scoped>
 .header {
-  padding: 1rem 0;
+  padding: 1rem 0 .75rem;
   background: white;
 
   &__wrapper {
@@ -91,7 +91,7 @@ import CartIcon from '@/components/icons/CartIcon.vue'
 
       &:hover,
       &.router-link-active {
-        color: var(--color-gold);
+        color: var(--color-secondary);
       }
     }
   }
@@ -112,7 +112,7 @@ import CartIcon from '@/components/icons/CartIcon.vue'
     transition: color 0.2s ease;
 
     &:hover {
-      color: var(--color-gold);
+      opacity: 0.8;
     }
   }
 
@@ -134,5 +134,19 @@ import CartIcon from '@/components/icons/CartIcon.vue'
     align-items: center;
     justify-content: center;
   }
+  &__search-icon{
+    width: 2.5rem;
+    height: 2.5rem;
+    background-color: var(--color-primary);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    &:hover{
+      background-color: var(--color-secondary);
+    }
+  }
 }
 </style>
+
