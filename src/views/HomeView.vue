@@ -1,11 +1,11 @@
 <script setup lang="ts">
-import ProductList from '@/components/productList.vue';
+import MainLayout from '@/components/MainLayout.vue';
+import ProductList from '@/components/ProductList.vue';
 
 </script>
 
 <template>
-  <main>
-    <h1>Home</h1>
+  <MainLayout>
     <ProductList />
-  </main>
+  </MainLayout>
 </template>

@@ -13,9 +13,9 @@
 
 <script setup lang="ts">
 import { useProductsStore } from '@/stores/productsStore'
-import ProductTile from '@/components/productTile.vue'
-import LoaderComponent from '@/components/loaderComponent.vue'
-import PaginationComponent from '@/components/paginationComponent.vue'
+import ProductTile from '@/components/ProductTile.vue'
+import LoaderComponent from '@/components/LoaderComponent.vue'
+import PaginationComponent from '@/components/PaginationComponent.vue'
 import { storeToRefs } from 'pinia';
 
 const productsStore = useProductsStore();
