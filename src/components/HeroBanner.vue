@@ -32,7 +32,7 @@
   &__greenWrapper {
     background-color: #0A655E;
     padding-top: 55px;
-    padding-bottom: 60px;
+    padding-bottom: 32px;
     position: relative;
 
       &::before {
@@ -60,22 +60,24 @@
   }
 
   &__content {
-    max-width: 570px;
+    max-width: 560px;
   }
 
   &__title {
+    font-family: 'Roboto', sans-serif;
     font-size: 53px;
     font-weight: 700;
-    margin-bottom: 16px
+    margin-bottom: 16px;
+
   }
 
   &__text {
-    font-size: 14px;
+    font-family: 'Roboto', sans-serif;
+    font-size: 13px;
   }
 
   &__paragraph {
     margin-bottom: 1.5rem;
-    font-size: 13px;
     font-weight: bold;
     letter-spacing: 0px;
     line-height: 2;
@@ -83,13 +85,13 @@
 
   &__paragraph-small {
     font-weight: 300;
-    font-size: 14px;
     line-height: 1.7;
+    font-size: 14px;
   }
 
   &__image {
     max-width: 31.25rem;
-    margin-left: 85px;
+    margin-left: 94px;
     margin-top: -40px;
 
     img {

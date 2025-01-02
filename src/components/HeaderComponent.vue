@@ -38,10 +38,13 @@
         <button class="header__action-btn header__user-icon">
           <UserIcon />
         </button>
-        <button class="header__action-btn header__cart_icon">
-          <CartIcon />
-          <span class="header__cart-count">0</span>
-        </button>
+        <div class="header__cart-wrapper">
+          <button class="header__action-btn header__cart_icon" @click="cartStore.openCart">
+            <CartIcon />
+            <span class="header__cart-count">{{ count }}</span>
+          </button>
+          <CartComponent ref="cartRef" />
+        </div>
       </div>
     </div>
   </header>
@@ -51,12 +54,20 @@
 import SearchIcon from '@/components/icons/SearchIcon.vue'
 import UserIcon from '@/components/icons/UserIcon.vue'
 import CartIcon from '@/components/icons/CartIcon.vue'
+import CartComponent from '@/components/CartComponent.vue'
+import { useCartStore } from '@/stores/cartStore'
+import { storeToRefs } from 'pinia'
+
+const cartStore = useCartStore();
+const { count } = storeToRefs(cartStore)
 </script>
 
 <style lang="scss" scoped>
 .header {
-  padding: 1rem 0 .75rem;
+  padding: 1.6875rem 0 .75rem;
   background: white;
+  position: relative;
+  z-index: 1001;
 
   &__wrapper {
     display: flex;
@@ -134,7 +145,8 @@ import CartIcon from '@/components/icons/CartIcon.vue'
     align-items: center;
     justify-content: center;
   }
-  &__search-icon{
+
+  &__search-icon {
     width: 2.5rem;
     height: 2.5rem;
     background-color: var(--color-primary);
@@ -143,10 +155,14 @@ import CartIcon from '@/components/icons/CartIcon.vue'
     align-items: center;
     justify-content: center;
     color: white;
-    &:hover{
+
+    &:hover {
       background-color: var(--color-secondary);
     }
   }
+
+  &__cart-wrapper {
+    position: relative;
+  }
 }
 </style>
-

@@ -1,5 +1,5 @@
 <template>
-  <div class="product-item">
+  <div class="product-item" @click="addToCart">
     <div class="product-item__image-wrapper">
       <img :src="product.image.url" :alt="product.image.alt" class="product-item__image" />
     </div>
@@ -7,7 +7,7 @@
       <h3 class="product-item__name">{{ product.name }}</h3>
       <p class="product-item__price">{{ product.price }} <span class="product-item__price-currency">PLN</span></p>
       <p class="product-item__vat">+ VAT 23%</p>
-      <button class="product-item__details">SZCZEGÓŁY</button>
+      <button class="product-item__details">Dodaj do koszyka</button>
       <div class="product-item__border" />
     </div>
 
@@ -15,49 +15,64 @@
 </template>
 
 <script setup lang="ts">
+import { useCartStore } from '@/stores/cartStore';
 import type { ProductType } from '@/types'
 
-defineProps<{
+const props = defineProps<{
   product: ProductType
 }>()
+
+const cartStore = useCartStore();
+
+const addToCart = () => {
+  cartStore.addProduct(props.product);
+  cartStore.openCart();
+  window.scrollTo({
+    top: 0,
+    behavior: 'smooth'
+
+  })
+}
 
 </script>
 
 <style lang="scss" scoped>
 .product-item {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 1rem;
-    position: relative;
-    cursor: pointer;
-    max-width: 17.1875rem;
-    margin-bottom: 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 1rem;
+  position: relative;
+  cursor: pointer;
+  max-width: 17.1875rem;
+  margin-bottom: 2rem;
 
-    &:hover {
-      .product-item__border {
-        border: .0625rem solid var(--color-secondary);
-        box-shadow: .3125rem .3125rem .625rem 0rem rgba(46, 56, 56, 0.2);
-        color: var(--color-secondary);
-        transition: all 0.2s ease-in-out;
-      }
-      .product-item__details, > * {
-        color: var(--color-secondary);
-        transition: all 0.2s ease-in-out;
-      }
-    }
-
-    &__border {
-      border: .0625rem solid transparent;
+  &:hover {
+    .product-item__border {
+      border: .0625rem solid var(--color-secondary);
+      box-shadow: .3125rem .3125rem .625rem 0rem rgba(46, 56, 56, 0.2);
+      color: var(--color-secondary);
       transition: all 0.2s ease-in-out;
-      position: absolute;
-      left: -1.875rem;
-      right: -1.875rem;
-      top: -5.125rem;
-      height: 155%;
     }
 
-    &__image-wrapper {
+    .product-item__details,
+    >* {
+      color: var(--color-secondary);
+      transition: all 0.2s ease-in-out;
+    }
+  }
+
+  &__border {
+    border: .0625rem solid transparent;
+    transition: all 0.2s ease-in-out;
+    position: absolute;
+    left: -1.875rem;
+    right: -1.875rem;
+    top: -5.125rem;
+    height: 155%;
+  }
+
+  &__image-wrapper {
     width: 100%;
     height: 11.875rem;
     margin-bottom: 1rem;
@@ -73,7 +88,7 @@ defineProps<{
     display: flex;
     flex-direction: column;
     align-items: center;
-    }
+  }
 
   &__image {
     max-width: 100%;
